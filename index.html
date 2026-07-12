@@ -130,6 +130,27 @@ section{padding:100px 48px;}
 .tool-row:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(201,98,47,0.08);background-color:var(--accent-bg);}
 .tool-row-icon{font-size:36px;padding-top:4px;}
 .tool-built-badge{display:inline-flex;align-items:center;gap:5px;background:var(--accent-bg);color:var(--accent);font-size:11px;font-weight:600;padding:3px 10px;border-radius:100px;border:1px solid rgba(201,98,47,0.2);margin-bottom:10px;}
+.learning-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:36px;}
+.learning-badge{display:inline-flex;align-items:center;gap:6px;background:var(--bg2);color:var(--text2);font-size:12px;font-weight:600;padding:5px 14px;border-radius:100px;border:1px solid var(--border2);margin-bottom:16px;}
+.learning-card h3{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;margin-bottom:24px;}
+.learning-visual{border-radius:var(--radius-sm);overflow:hidden;border:1px solid var(--border);margin-bottom:32px;}
+.learning-visual img{width:100%;display:block;cursor:zoom-in;}
+.learning-steps{display:flex;margin-bottom:0;}
+.learning-step-btn{position:relative;background:var(--accent);color:#fff;border:none;clip-path:polygon(0 0, calc(100% - 16px) 0, 100% 50%, calc(100% - 16px) 100%, 0 100%, 16px 50%);padding:12px 30px;margin-left:-16px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;transition:background .2s,color .2s;z-index:1;}
+.learning-step-btn:not(:first-child)::before{content:'';position:absolute;left:16px;top:50%;width:9px;height:9px;background:var(--bg2);transform:translate(-50%,-50%) rotate(45deg);z-index:5;pointer-events:none;}
+.learning-step-btn.active::before{display:none;}
+.learning-step-btn:first-child{clip-path:polygon(0 0, calc(100% - 16px) 0, 100% 50%, calc(100% - 16px) 100%, 0 100%);margin-left:0;padding-left:22px;}
+.learning-step-btn:hover{background:var(--accent2);}
+.learning-step-btn.active{background:var(--bg2);color:var(--accent);filter:none;z-index:0;}
+.learning-step-btn.active:hover{background:var(--bg2);}
+.learning-panel{background:var(--bg2);border-radius:0 var(--radius-sm) var(--radius-sm) var(--radius-sm);padding:28px;min-height:120px;}
+.learning-panel p{color:var(--text2);font-size:14px;line-height:1.65;font-weight:300;}
+.learning-panel p strong{color:var(--accent);font-weight:600;}
+@media(max-width:900px){
+  .learning-steps{flex-direction:column;}
+  .learning-step-btn{clip-path:none !important;margin-left:0 !important;border-radius:6px !important;margin-bottom:6px;padding:14px 20px !important;text-align:left;}
+  .learning-panel{border-radius:var(--radius-sm);}
+}
 .tool-row h3{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;margin-bottom:4px;}
 .tool-row .tool-sub{font-size:13px;color:var(--text3);margin-bottom:12px;}
 .tool-row p{color:var(--text2);font-size:15px;line-height:1.6;font-weight:300;margin-bottom:16px;}
@@ -270,7 +291,6 @@ footer{padding:32px 48px;border-top:1px solid var(--border);display:flex;align-i
 .contact-form-group label{display:block;font-size:12px;font-weight:600;color:var(--text2);margin-bottom:6px;}
 .contact-form-group label .optional{font-weight:400;color:var(--text3);}
 .contact-form-group input,.contact-form-group textarea{width:100%;background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:11px 14px;font-size:14px;font-family:inherit;color:var(--text);transition:border-color .15s,background .15s;}
-.contact-form-group input:hover,.contact-form-group textarea:hover{border-color:var(--accent);background:var(--accent-bg);}
 .contact-form-group input:focus,.contact-form-group textarea:focus{outline:none;border-color:var(--accent);background:var(--surface);}
 .contact-form-group textarea{resize:vertical;min-height:100px;}
 .contact-file-drop{border:1.5px dashed var(--border2);border-radius:10px;padding:20px;text-align:center;font-size:13px;color:var(--text2);cursor:pointer;transition:all .15s;background:var(--bg2);}
@@ -293,6 +313,7 @@ footer{padding:32px 48px;border-top:1px solid var(--border);display:flex;align-i
 .footer-logo{font-family:'Playfair Display',serif;font-weight:900;font-size:20px;color:var(--text);text-decoration:none;}
 .footer-logo span{color:var(--accent);}
 footer p{color:var(--text3);font-size:13px;}
+.footer-sep{color:var(--border2);margin:0 4px;}
 
 /* RESPONSIVE */
 @media(max-width:900px){
@@ -676,7 +697,7 @@ footer p{color:var(--text3);font-size:13px;}
           <div class="exp-date-range">Mar 2026 – May 2026</div>
           <div>
             <div class="exp-title">Outreach VA & Admin VA</div>
-            <div class="exp-company">UK-based Shopify Brand — Remote</div>
+            <div class="exp-company">UK-based Shopify Brands (Beauty & Wellness) — Remote</div>
           </div>
           <div class="exp-toggle"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
         </div>
@@ -702,7 +723,7 @@ footer p{color:var(--text3);font-size:13px;}
           <div class="exp-date-range">Nov 2025 – Feb 2026</div>
           <div>
             <div class="exp-title">Social Media & E-commerce VA</div>
-            <div class="exp-company">AU-based Shopify Brand — Remote</div>
+            <div class="exp-company">AU-based Shopify Brands (Home Devices, Health & Personal Care) — Remote</div>
           </div>
           <div class="exp-toggle"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
         </div>
@@ -718,17 +739,20 @@ footer p{color:var(--text3);font-size:13px;}
         <div class="exp-row-top">
           <div class="exp-date-range">May 2023 – Oct 2025</div>
           <div>
-            <div class="exp-title">Operations & Admin Support</div>
-            <div class="exp-company">Family Business — On-site / Remote</div>
+            <div class="exp-title">Inventory & Admin Support</div>
+            <div class="exp-company">Leather Factory — On-site</div>
           </div>
           <div class="exp-toggle"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
         </div>
         <div class="exp-detail">
           <ul>
-            <li>Managed day-to-day operations: inventory tracking, order coordination, and supplier communication</li>
-            <li>Handled customer inquiries, administrative tasks, and record-keeping for business efficiency</li>
+            <li>Audited raw material and finished-product inventory through hands-on counting and weighing, catching discrepancies before they hit the books</li>
+            <li>Flagged low-stock items ahead of shortages, keeping replenishment cycles on schedule and production running without interruption</li>
+            <li>Built and maintained an organized document filing system, keeping business records audit-ready and easy to retrieve</li>
+            <li>Handled data entry for invoices and receipts with high accuracy, keeping financial records current and reconciliation-ready</li>
+            <li>Coordinated directly with suppliers on orders and follow-ups, securing on-time replenishment and stronger vendor relationships</li>
           </ul>
-          <div class="exp-tags"><span class="exp-tag">Operations</span><span class="exp-tag">Admin</span><span class="exp-tag">Inventory</span></div>
+          <div class="exp-tags"><span class="exp-tag">Inventory Auditing</span><span class="exp-tag">Admin</span><span class="exp-tag">Supplier Coordination</span><span class="exp-tag">Data Entry</span></div>
         </div>
       </div>
       <div class="exp-row fade-up" onclick="this.classList.toggle('open')">
@@ -831,6 +855,31 @@ footer p{color:var(--text3);font-size:13px;}
   </div>
 </section>
 
+<!-- IN PROGRESS -->
+<section id="learning">
+  <div class="container">
+    <div class="section-num fade-up">06 — In Progress</div>
+    <h2 class="section-title fade-up">Still learning.<br>Still building.</h2>
+    <p class="section-sub fade-up">Not everything here comes from paid client work. Some of it I build to get ahead of where the work is heading.</p>
+    <div class="learning-card fade-up">
+      <div class="learning-badge">🧪 Self-directed · not yet client-deployed</div>
+      <h3>Missed-Call Recovery Workflow — GoHighLevel</h3>
+      <div class="learning-visual">
+        <img src="https://res.cloudinary.com/dw9ecyyzx/image/upload/v1783756688/preview_tk8ni4.webp" alt="GoHighLevel missed-call recovery workflow diagram" onclick="openLightbox('https://res.cloudinary.com/dw9ecyyzx/image/upload/v1783756688/preview_tk8ni4.webp','img')">
+      </div>
+      <div class="learning-steps" id="learningSteps">
+        <button class="learning-step-btn active" onclick="switchLearningStep(0,this)">Problem</button>
+        <button class="learning-step-btn" onclick="switchLearningStep(1,this)">Solution</button>
+        <button class="learning-step-btn" onclick="switchLearningStep(2,this)">Action</button>
+        <button class="learning-step-btn" onclick="switchLearningStep(3,this)">Where it stands</button>
+      </div>
+      <div class="learning-panel" id="learningPanel">
+        <p>Missed calls are <strong>lost revenue</strong>. Most businesses either call back too late, forget entirely, or have <strong>no way to tell whether a lead already got handled</strong> — so automations end up texting someone who just called back and got picked up, or missing someone who quietly replied and got ignored.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- CTA -->
 <section class="cta-section" id="contact">
   <h2>Still doing it yourself?<br><em id="ctaWord"></em></h2>
@@ -844,8 +893,7 @@ footer p{color:var(--text3);font-size:13px;}
 
 <footer>
   <a href="#" class="footer-logo">RSB<span>.</span></a>
-  <p>© 2026 Richard S. Batin — Bulacan, Philippines</p>
-  <p>Available for remote work worldwide</p>
+  <p>© 2026 Richard S. Batin — Bulacan, Philippines <span class="footer-sep">·</span> Available for remote work worldwide</p>
 </footer>
 
 <!-- FLOATING CONTACT BUTTON -->
@@ -858,7 +906,7 @@ footer p{color:var(--text3);font-size:13px;}
 <div class="contact-overlay" id="contactOverlay" onclick="if(event.target===this) closeContactModal()">
   <div class="contact-modal">
     <button class="contact-modal-close" onclick="closeContactModal()">&times;</button>
-    <h2>Let's talk<span class="title-dot">.</span></h2>
+    <h2>Let's talk.</h2>
     <p class="contact-modal-sub">Tell me a bit about what you need — I'll get back to you within 24 hours.</p>
     <form id="contactForm" onsubmit="submitContactForm(event)">
       <div class="contact-form-row">
@@ -926,6 +974,19 @@ function staggerChips(panel) {
     chip.style.animationDelay = (i * 0.04) + 's';
   });
 }
+/* ── Learning case-study step tabs ── */
+const learningContent = [
+  "Missed calls are <strong>lost revenue</strong>. Most businesses either call back too late, forget entirely, or have <strong>no way to tell whether a lead already got handled</strong> — so automations end up texting someone who just called back and got picked up, or missing someone who quietly replied and got ignored.",
+  "An automated missed-call recovery workflow with <strong>three distinct exit conditions</strong>, so no lead falls into the wrong bucket: no response escalates through a timed SMS sequence then hands off to a human; a reply pulls the contact into a resolved path; an answered callback removes them from the workflow entirely so no redundant texts go out.",
+  "<strong>Built all three paths end-to-end</strong> — a no-reply path with a buffer window before the first text, a two-touch SMS sequence, and an automatic escalation to a follow-up task if neither text gets a reply; a reply path that tags and assigns the contact the moment they respond; and a callback path that detects an answered call and pulls the contact out before the sequence can fire again.",
+  "Designed and built independently to get ahead of GHL-based client work — <strong>not yet deployed on a live account</strong>. Video walkthrough coming soon."
+];
+function switchLearningStep(i, btn){
+  document.querySelectorAll('.learning-step-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('learningPanel').innerHTML = '<p>' + learningContent[i] + '</p>';
+}
+
 function switchSkill(id, btn) {
   document.querySelectorAll('.skill-panel').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.skill-nav-btn').forEach(b => b.classList.remove('active'));
@@ -983,7 +1044,6 @@ window.addEventListener('resize', updateScrollMeter);
 updateScrollMeter();
 
 /* ── Contact modal + floating button ── */
-// TODO: paste your deployed Apps Script Web App URL here once ready
 const CONTACT_ENDPOINT = "https://script.google.com/macros/s/AKfycbxg0C02F5xnOMFH6h3Ty_O6gWT3BVdbygbMxrjaKZ3QsGKEioF4PxMXl-ZX9Dx9HffL/exec";
 
 function openContactModal(e){
