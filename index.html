@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Richard S. Batin — Virtual Assistant</title>
+<title>Richard S. Batin — E-commerce Operations & Automation Specialist</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -133,7 +133,7 @@ section{padding:100px 48px;}
 .learning-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:36px;}
 .learning-badge{display:inline-flex;align-items:center;gap:6px;background:var(--bg2);color:var(--text2);font-size:12px;font-weight:600;padding:5px 14px;border-radius:100px;border:1px solid var(--border2);margin-bottom:16px;}
 .learning-card h3{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;margin-bottom:24px;}
-.learning-visual{border-radius:var(--radius-sm);overflow:hidden;border:1px solid var(--border2);margin-bottom:32px;}
+.learning-visual{border-radius:var(--radius-sm);overflow:hidden;border:1px solid rgba(201,98,47,0.35);margin-bottom:32px;}
 .learning-visual img{width:100%;display:block;cursor:zoom-in;}
 .learning-steps{display:flex;margin-bottom:0;}
 .learning-step-btn{position:relative;background:var(--accent);color:#fff;border:none;clip-path:polygon(0 0, calc(100% - 16px) 0, 100% 50%, calc(100% - 16px) 100%, 0 100%, 16px 50%);padding:12px 30px;margin-left:-16px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;transition:background .2s,color .2s;z-index:1;}
@@ -341,8 +341,8 @@ footer p{color:var(--text3);font-size:13px;}
   .demo-ba{grid-template-columns:1fr;}
   .demo-ba-divider{display:none;}
   .demo-ba-side img{height:200px;}
-  .skills-layout{grid-template-columns:1fr;}
-  .skills-nav{flex-direction:row;flex-wrap:wrap;position:relative;}
+  .skills-layout{display:block;}
+  .skills-nav{flex-direction:row;flex-wrap:wrap;position:relative;margin-bottom:28px;}
   .exp-row-top{grid-template-columns:1fr auto;grid-template-areas:"date toggle" "title toggle";column-gap:16px;row-gap:4px;padding:16px 18px;}
   .exp-row-top .exp-date-range{grid-area:date;}
   .exp-row-top > div:nth-child(2){grid-area:title;}
@@ -399,7 +399,7 @@ footer p{color:var(--text3);font-size:13px;}
   <div class="hero-inner">
     <div class="hero-eyebrow">
       <div class="hero-available">Available for new clients</div>
-      <div class="hero-role">Virtual Assistant · Bulacan, Philippines</div>
+      <div class="hero-role">E-commerce Operations & Automation Specialist · Bulacan, Philippines</div>
     </div>
     <h1>The VA who<br>builds his <span class="accent-word" id="ownWord"></span><br>tools.</h1>
     <div class="hero-bottom">
@@ -489,7 +489,7 @@ footer p{color:var(--text3);font-size:13px;}
       <div class="about-content fade-up">
         <div class="section-num">01 — About</div>
         <h2 class="section-title">You need more than<br>someone who follows<br>instructions.</h2>
-        <p>I'm Richard — a Virtual Assistant based in the Philippines with 2+ years of remote experience, including dedicated work in <strong>influencer outreach, e-commerce operations, and workflow automation</strong> since late 2025. I take the backend work off your hands and keep it off.</p>
+        <p>I'm Richard — an E-commerce Operations & Automation Specialist based in the Philippines with 2+ years of remote experience, including dedicated work in <strong>influencer outreach, e-commerce operations, and workflow automation</strong> since late 2025. I take the backend work off your hands and keep it off.</p>
         <p>When I hit a repetitive bottleneck, I don't just grind through it manually — <strong>I build a tool to eliminate it</strong>. Chrome Extensions, Apps Script dashboards, Sheets systems. Built from scratch because the paid alternatives weren't worth your budget.</p>
         <div class="about-quote">"Your job is to grow the business. Mine is to make sure nothing operational slows that down."</div>
         <div class="about-pillars">
@@ -891,7 +891,7 @@ footer p{color:var(--text3);font-size:13px;}
 <!-- CTA -->
 <section class="cta-section" id="contact">
   <h2>Still doing it yourself?<br><em id="ctaWord"></em></h2>
-  <p>If your outreach pipeline needs cleaning up, your store needs managing, or you just need someone who thinks — not just executes — let's talk. Free 30-minute call. No pitch, no pressure.</p>
+  <p>If your operations need someone who builds systems instead of just following them, or you're tired of explaining the same fix twice — let's talk. Free 30-minute call.</p>
   <div class="cta-btns">
     <a href="https://calendly.com/batinrichard/30min" target="_blank" class="btn-white">📅 Book a Free 30-min Call</a>
     <a href="#" onclick="openContactModal(event)" class="btn-outline-white">✉️ Get in Touch</a>
@@ -1315,6 +1315,13 @@ function scheduleTypewriter(container, targetSelector, word){
   }, delay);
 }
 function startTypewriterLoop(el, word){
+  // Reserve the full word's width up front so typing/deleting never changes
+  // whether this line wraps — that was causing the whole page to jump as it animated.
+  el.style.display = 'inline-block';
+  el.textContent = word;
+  const fullWidth = el.getBoundingClientRect().width;
+  el.style.minWidth = fullWidth + 'px';
+
   function typeThenDelete(){
     let i = 0;
     el.innerHTML = '<span class="type-caret">&nbsp;</span>';
@@ -1388,12 +1395,16 @@ function pairGo(dir){
   renderLightboxPair();
 }
 let lbSwipeStartX = null;
-document.getElementById('lightbox').addEventListener('pointerdown', e => { lbSwipeStartX = e.clientX; });
-document.getElementById('lightbox').addEventListener('pointerup', e => {
-  if(lbSwipeStartX === null || !currentPairKey) return;
-  const dx = e.clientX - lbSwipeStartX;
-  if(Math.abs(dx) > 40) pairGo(dx < 0 ? 1 : -1);
-  lbSwipeStartX = null;
+window.addEventListener('load', () => {
+  const lb = document.getElementById('lightbox');
+  if(!lb) return;
+  lb.addEventListener('pointerdown', e => { lbSwipeStartX = e.clientX; });
+  lb.addEventListener('pointerup', e => {
+    if(lbSwipeStartX === null || !currentPairKey) return;
+    const dx = e.clientX - lbSwipeStartX;
+    if(Math.abs(dx) > 40) pairGo(dx < 0 ? 1 : -1);
+    lbSwipeStartX = null;
+  });
 });
 
 function openLightbox(src, type) {
